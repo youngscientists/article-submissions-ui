@@ -31,7 +31,8 @@ export default [{
                         <li>Full References in the <a href="http://www.chicagomanualofstyle.org/tools_citationguide.html"
                                 target="_blank">Chicago Style</a></li>
                     </ul>
-        `)
+        `),
+        new Input("I am eligible to proceed and my article is complete", "eligible", "checkbox")
         ]
     },
     {

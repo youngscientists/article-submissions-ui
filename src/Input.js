@@ -8,6 +8,7 @@ export default class Input {
         })
 
         this.elementType = "input"
+        this.complete = false
     }
 }
 
@@ -16,6 +17,7 @@ export class Text {
         Object.assign(this, { title, text })
 
         this.elementType = "div"
+        this.complete = true
     }
 }
 
@@ -30,6 +32,8 @@ export class Select {
         Object.assign(this, { title, id, options })
 
         this.elementType = "select"
+        this.complete = false
+
     }
 }
 
@@ -38,5 +42,7 @@ export class TextArea {
         Object.assign(this, { title, id, placeholder, options })
 
         this.elementType = "textarea"
+        this.complete = false
+
     }
 }

@@ -1,13 +1,16 @@
 <template>
   <div>
+              {{complete}}
+
     <p :is="meta.text ? 'h3' : 'p'">{{meta.title}}</p>
+
     <c
       :is="meta.elementType"
       :id="meta.id"
       :type="meta.type"
       :placeholder="meta.placeholder"
       v-html="meta.text"
-      v-model="value"
+      @change="complete = !complete"
       required
     >
       <option  value="">-- Select --</option>
@@ -24,7 +27,7 @@ export default {
   },
   data() {
       return {
-          value: null
+          complete: this.props.meta.complete
       }
   }
 };

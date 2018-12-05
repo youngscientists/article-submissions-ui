@@ -6,7 +6,8 @@
       <Navbar></Navbar>
 
       <FormPage
-        v-for="(entry, index) in inputs.filter(x => x.id == $store.state.currentPage)"
+        v-for="(entry, index) in inputs"
+        v-show="entry.id == $store.state.currentPage"
         :inputs="entry.pairs"
         :key="index"
         :id="entry.title"

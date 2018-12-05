@@ -3,7 +3,7 @@
 
     <ThemedInput v-for="(input, i) in inputs" :key="i" :meta="input"></ThemedInput>
 
-    <button>Next</button>
+    <button :class="{inactive: !complete}" @click="goToNextPage">Next</button>
   </div>
 </template>
 
@@ -15,8 +15,17 @@ export default {
   props: {
     inputs: Array
   },
+  methods: {
+    goToNextPage() {
+      if(this.complete && !this.$store.isLastPage) this.$store.commit('goToNextPage')
+      else if (this.complete && this.$store.isLastPage) this.$emit("submitForm")
+
+    }
+  },
   data() {
-    return {};
+    return {
+        complete: true
+    };
   },
   components: {
     ThemedInput
@@ -41,6 +50,11 @@ export default {
     text-decoration: none;
     margin: 0 auto;
     margin-top: 20px;
+
+    &.inactive {
+        background: grey;
+        pointer-events: none;
+    }
   }
 }
 </style>
