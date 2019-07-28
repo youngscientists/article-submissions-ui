@@ -1,21 +1,22 @@
 <template>
   <div>
-              {{complete}}
-
     <p :is="meta.text ? 'h3' : 'p'">{{meta.title}}</p>
 
     <c
       :is="meta.elementType"
       :id="meta.id"
+      :name="meta.id"
       :type="meta.type"
       :placeholder="meta.placeholder"
       v-html="meta.text"
-      @change="complete = !complete"
+      v-validate="'required'"
       required
     >
-      <option  value="">-- Select --</option>
+      <option value>-- Select --</option>
       <option v-for="(option, index) in meta.options" :key="index" :value="option">{{option}}</option>
     </c>
+
+    <span>{{ errors.first(meta.id) }}</span>
   </div>
 </template>
 
@@ -26,9 +27,9 @@ export default {
     meta: Object
   },
   data() {
-      return {
-          complete: this.props.meta.complete
-      }
+    return {
+      complete: this.$props.meta.complete
+    };
   }
 };
 </script>
@@ -36,10 +37,10 @@ export default {
 <style lang="scss" scoped]>
 $transition: all 0.3s ease-in-out;
 
-input,
+input:not([type="checkbox"]),
 textarea,
 select {
-    padding: 12px;
+  padding: 12px;
   min-width: 100%;
   max-width: 100%;
   margin: 0 auto;
@@ -59,5 +60,4 @@ select {
     border: 1px solid rgba(209, 54, 25, 1);
   }
 }
-
 </style>

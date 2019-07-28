@@ -6,7 +6,7 @@
       <Navbar></Navbar>
 
       <FormPage
-        v-for="(entry, index) in inputs"
+        v-for="(entry, index) in pages"
         v-show="entry.id == $store.state.currentPage"
         :inputs="entry.pairs"
         :key="index"
@@ -17,10 +17,9 @@
 </template>
 
 <script>
-import Navbar from "./Navbar.vue";
+import Navbar from "./navbar/Navbar.vue";
 import FormPage from "./FormPage";
-import inputs from "../data.js"
-
+import pages from "../data.js";
 
 export default {
   name: "MainForm",
@@ -31,10 +30,13 @@ export default {
   props: {
     message: String
   },
-  data() {
-    return {
-      inputs
-    };
+  computed: {
+    pages() {
+      return this.$store.state.pages;
+    }
+  },
+  mounted() {
+    this.$store.commit("pages", pages);
   }
 };
 </script>
@@ -57,5 +59,12 @@ export default {
       text-transform: uppercase;
     }
   }
+}
+</style>
+
+<style>
+#eligible,
+#eligible ~ label {
+  display: inline-block;
 }
 </style>

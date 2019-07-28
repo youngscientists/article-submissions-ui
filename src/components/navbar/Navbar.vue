@@ -18,10 +18,10 @@ export default {
   components: {
     NavbarEntry
   },
-  data() {
-      return {
-          headers: ["Eligibility", "You", "School", "Article"]
-      }
+  computed: {
+    headers() {
+      return this.$store.state.pages.map(n => n.title);
+    }
   },
   methods: {
     doClick(e) {

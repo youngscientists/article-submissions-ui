@@ -1,6 +1,5 @@
 <template>
   <div class="formPage">
-
     <ThemedInput v-for="(input, i) in inputs" :key="i" :meta="input"></ThemedInput>
 
     <button :class="{inactive: !complete}" @click="goToNextPage">Next</button>
@@ -17,15 +16,13 @@ export default {
   },
   methods: {
     goToNextPage() {
-      if(this.complete && !this.$store.isLastPage) this.$store.commit('goToNextPage')
-      else if (this.complete && this.$store.isLastPage) this.$emit("submitForm")
-
+      this.$store.dispatch("nextPage");
     }
   },
-  data() {
-    return {
-        complete: true
-    };
+  computed: {
+    complete() {
+      return this.$store.state.pages[this.$store.state.currentPage].complete;
+    }
   },
   components: {
     ThemedInput
@@ -52,8 +49,8 @@ export default {
     margin-top: 20px;
 
     &.inactive {
-        background: grey;
-        pointer-events: none;
+      background: grey;
+      pointer-events: none;
     }
   }
 }

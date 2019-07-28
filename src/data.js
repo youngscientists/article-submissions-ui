@@ -32,8 +32,9 @@ export default [{
                                 target="_blank">Chicago Style</a></li>
                     </ul>
         `),
-        new Input("I am eligible to proceed and my article is complete", "eligible", "checkbox")
-        ]
+            new Input("I am eligible to proceed and my article is complete", "eligible", "checkbox")
+        ],
+        complete: false
     },
     {
         id: 1,
@@ -46,7 +47,8 @@ export default [{
             new Input("Your Country", "nationality", "text", "British"),
             new TextArea("Biography", "biography", "Write this in the third person!"),
             new Input("Photo", "photo", "photo"),
-        ]
+        ],
+        complete: false
     },
     {
         id: 2,
@@ -58,7 +60,8 @@ export default [{
             new Input("Your School / Originisation", "school", "text", "Stockholm School of Science"),
             new TextArea("School / Orginisation Address", "schoolAddress", "123 Education Street, London, WC3 9BT"),
             new Input("Teacher's Email", "teachersEmail", "text", )
-        ]
+        ],
+        complete: false
     },
     {
         id: 3,
@@ -68,6 +71,7 @@ export default [{
             new Input("Article Document", "document", "file"),
             new Input("Article Summary", "summary", "text", "Space and stuff"),
 
-        ]
+        ],
+        complete: false
     }
 ];
